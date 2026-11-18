@@ -3,6 +3,7 @@
   var statusEl = document.getElementById("form-status");
   var intentSelect = document.getElementById("intent");
   var navToggle = document.getElementById("nav-toggle");
+  var navLabel = navToggle && navToggle.querySelector(".visually-hidden");
   var TO = "moises@shipnestsupply.com";
 
   var intentLabels = {
@@ -18,21 +19,43 @@
     }
   }
 
-  function applyIntentFromLink(link) {
-    var intent = link.getAttribute("data-intent");
-    if (intent) setIntent(intent);
+  function setNavOpen(open) {
+    if (!navToggle) return;
+    navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    if (navLabel) navLabel.textContent = open ? "Close menu" : "Open menu";
+  }
+
+  if (navToggle) {
+    navToggle.addEventListener("click", function () {
+      var open = navToggle.getAttribute("aria-expanded") !== "true";
+      setNavOpen(open);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && navToggle.getAttribute("aria-expanded") === "true") {
+        setNavOpen(false);
+        navToggle.focus();
+      }
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.matchMedia("(min-width: 861px)").matches) {
+        setNavOpen(false);
+      }
+    });
   }
 
   document.querySelectorAll("[data-intent]").forEach(function (link) {
     link.addEventListener("click", function () {
-      applyIntentFromLink(link);
-      if (navToggle) navToggle.checked = false;
+      var intent = link.getAttribute("data-intent");
+      if (intent) setIntent(intent);
+      setNavOpen(false);
     });
   });
 
   document.querySelectorAll(".site-nav a").forEach(function (link) {
     link.addEventListener("click", function () {
-      if (navToggle) navToggle.checked = false;
+      setNavOpen(false);
     });
   });
 

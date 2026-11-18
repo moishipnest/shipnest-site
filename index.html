@@ -42,7 +42,7 @@
   }
   </script>
 </head>
-<body>
+<body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -61,11 +61,11 @@
         </span>
       </a>
 
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
-      <label for="nav-toggle" class="nav-toggle-btn" aria-label="Open menu">
-        <span></span>
-      </label>
-      <nav class="site-nav" aria-label="Primary">
+      <button type="button" class="nav-toggle-btn" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="visually-hidden">Open menu</span>
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
         <a href="#stock">What we stock</a>
         <a href="#why">Why ShipNest</a>
         <a href="#custom">Custom print</a>
@@ -76,12 +76,11 @@
   </header>
 
   <main id="main">
-    <section class="hero" id="top">
+    <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <p class="hero-kicker">A US supplier for small online shops</p>
           <h1>Mailers in quantities that <em>actually</em> make sense.</h1>
-          <p class="hero-lead">Poly and padded mailers for Shopify, Etsy, and Amazon sellers. Small-batch wholesale quantities (100 to 1,000), fast US shipping, and custom printed mailers with your logo from low minimums.</p>
+          <p class="hero-lead">Poly and padded mailers for Shopify, Etsy, and Amazon sellers. <span class="nowrap">Small-batch</span> wholesale quantities (100 to 1,000), fast US shipping, and custom printed mailers with your logo from low minimums.</p>
           <div class="btn-row">
             <a class="btn" href="#contact">Request a quote</a>
             <a class="btn btn-ghost" href="#contact" data-intent="sample">Get a free sample pack</a>
@@ -133,7 +132,6 @@
     <section class="section stock" id="stock">
       <div class="wrap">
         <div class="section-head">
-          <p class="section-kicker">What we stock</p>
           <h2 class="section-title">Poly mailers and padded mailers, in the sizes sellers use most.</h2>
           <p class="section-lead">Start with a mixed-size order or a free sample pack. If you need a size that isn’t listed here, ask — we’ll tell you what we can source.</p>
         </div>
@@ -174,28 +172,23 @@
     <section class="section" id="why">
       <div class="wrap">
         <div class="section-head">
-          <p class="section-kicker">Why ShipNest</p>
           <h2 class="section-title">Built for small brands, not warehouse contracts.</h2>
           <p class="section-lead">ShipNest Supply is a new US distributor for small online sellers. We keep the offer simple: useful sizes, sensible quantities, and a person you can actually write to.</p>
         </div>
         <div class="why-grid">
           <article class="why-card">
-            <span class="why-num">01</span>
             <h3>Small quantities</h3>
             <p>Wholesale in small-batch quantities (100 to 1,000). Stock what you need without filling a closet with mailers.</p>
           </article>
           <article class="why-card">
-            <span class="why-num">02</span>
             <h3>Wholesale pricing</h3>
             <p>Pricing meant for sellers, even when the order is a few hundred pieces instead of a full case stack.</p>
           </article>
           <article class="why-card">
-            <span class="why-num">03</span>
             <h3>Fast reorders</h3>
             <p>Fast US shipping on reorders, so you don’t have to guess a season ahead or sit on a pallet.</p>
           </article>
           <article class="why-card">
-            <span class="why-num">04</span>
             <h3>Custom print</h3>
             <p>When you’re ready, put your logo on your mailers. Custom printed mailers are available from low minimums.</p>
           </article>
@@ -206,7 +199,6 @@
     <section class="section custom" id="custom">
       <div class="wrap custom-grid">
         <div>
-          <p class="section-kicker">Custom printed mailers</p>
           <h2 class="section-title">Your logo, on the package your customer opens.</h2>
           <p class="section-lead">We offer custom printed poly mailers from low minimums. Tell us the size, quantity, and how you’d like your logo to look, and we’ll put together a quote.</p>
           <ul class="custom-notes">
@@ -226,7 +218,6 @@
     <section class="section" id="partners">
       <div class="wrap">
         <div class="partners-box">
-          <p class="section-kicker">Wholesale partners</p>
           <h2 class="section-title">We work with manufacturers, and we’re open to supplier partnerships.</h2>
           <p>ShipNest sources poly and padded mailers from manufacturers for resale to small online sellers in the US. If you produce these products and would like to work together, we’d like to hear from you.</p>
           <a class="btn" href="#contact" data-intent="partner">Talk to us about supplying</a>
@@ -237,7 +228,6 @@
     <section class="section contact" id="contact">
       <div class="wrap">
         <div class="section-head">
-          <p class="section-kicker">Contact</p>
           <h2 class="section-title">Request a quote, or ask for a free sample pack.</h2>
           <p class="section-lead">The form opens an email to Moises at ShipNest Supply, already filled in with what you entered. Nothing is sent until you press send in your mail app.</p>
         </div>
@@ -245,7 +235,7 @@
           <form class="quote-form" id="quote-form" action="mailto:moises@shipnestsupply.com" method="post" enctype="text/plain">
             <div class="form-row">
               <div class="field">
-                <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
+                <label for="name">Name <span class="req"><span class="visually-hidden">required</span><span aria-hidden="true">*</span></span></label>
                 <input id="name" name="name" type="text" autocomplete="name" required>
               </div>
               <div class="field">
@@ -255,7 +245,7 @@
             </div>
             <div class="form-row">
               <div class="field">
-                <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+                <label for="email">Email <span class="req"><span class="visually-hidden">required</span><span aria-hidden="true">*</span></span></label>
                 <input id="email" name="email" type="email" autocomplete="email" required>
               </div>
               <div class="field">
@@ -274,7 +264,7 @@
             </div>
             <button class="btn" type="submit">Open email to ShipNest</button>
             <p class="form-note">This uses your email app. If nothing opens, write directly to <a href="mailto:moises@shipnestsupply.com">moises@shipnestsupply.com</a>.</p>
-            <p class="form-status" id="form-status" hidden></p>
+            <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
           </form>
           <aside class="contact-aside">
             <h3>Write to us directly</h3>
